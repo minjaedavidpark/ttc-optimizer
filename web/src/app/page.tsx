@@ -3,9 +3,17 @@
 import { useEffect, useState } from "react";
 import VehiclesMap from "../components/Map";
 
+type TripUpdate = {
+  trip_id: string | null;
+  route_id: string | null;
+  stop_id: string | null;
+  predicted_delay_sec: number | null;
+  timestamp: number | null;
+};
+
 export default function Home() {
   const [route, setRoute] = useState("29");
-  const [updates, setUpdates] = useState<any[]>([]);
+  const [updates, setUpdates] = useState<TripUpdate[]>([]);
 
   useEffect(() => {
     async function load() {
